@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/XZip.App/XZip.App.csproj">
+      <Platform Solution="Debug|*" Project="x86" />
+    </Project>
+    <Project Path="src/XZip.Core/XZip.Core.csproj" />
+    <Project Path="src/XZip.Helper/XZip.Helper.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/XZip.Core.Tests/XZip.Core.Tests.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,5 @@
+LIBRARY "XZip.ShellExt"
+EXPORTS
+    DllGetActivationFactory PRIVATE
+    DllCanUnloadNow         PRIVATE
+    DllGetClassObject       PRIVATE

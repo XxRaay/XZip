@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package
+    xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+    xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+    xmlns:uap2="http://schemas.microsoft.com/appx/manifest/uap/windows10/2"
+    xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+    xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+    xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
+    xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+    xmlns:desktop4="http://schemas.microsoft.com/appx/manifest/desktop/windows10/4"
+    xmlns:desktop5="http://schemas.microsoft.com/appx/manifest/desktop/windows10/5"
+    IgnorableNamespaces="uap rescap com desktop desktop4 desktop5">
+
+  <Identity Name="XZip" Publisher="CN=XZip" Version="0.1.0.0" />
+
+  <mp:PhoneIdentity xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+                    PhoneProductId="3e5b8c12-1b4d-4a77-9a78-3f0b2d8b9c00"
+                    PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+
+  <Properties>
+    <DisplayName>XZip</DisplayName>
+    <PublisherDisplayName>XZip contributors</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop"
+                       MinVersion="10.0.17763.0"
+                       MaxVersionTested="10.0.22621.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="en-us" />
+    <Resource Language="ru-ru" />
+  </Resources>
+
+  <Applications>
+    <Application Id="XZip" Executable="XZip.App.exe" EntryPoint="$targetentrypoint$">
+
+      <uap:VisualElements
+          DisplayName="XZip"
+          Description="Modern archive manager"
+          Square150x150Logo="Assets\Square150x150Logo.png"
+          Square44x44Logo="Assets\Square44x44Logo.png"
+          BackgroundColor="transparent">
+        <uap:DefaultTile Square71x71Logo="Assets\SmallTile.png" Wide310x150Logo="Assets\Wide310x150Logo.png" />
+      </uap:VisualElements>
+
+      <Extensions>
+
+        <!-- File type associations -->
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="xzip-archives">
+            <uap:DisplayName>XZip archive</uap:DisplayName>
+            <uap:Logo>Assets\FileTypes\archive.png</uap:Logo>
+            <uap:SupportedFileTypes>
+              <uap:FileType>.zip</uap:FileType>
+              <uap:FileType>.7z</uap:FileType>
+              <uap:FileType>.tar</uap:FileType>
+              <uap:FileType>.gz</uap:FileType>
+              <uap:FileType>.tgz</uap:FileType>
+              <uap:FileType>.bz2</uap:FileType>
+              <uap:FileType>.tbz</uap:FileType>
+              <uap:FileType>.tbz2</uap:FileType>
+            </uap:SupportedFileTypes>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
+
+        <!-- Custom URI scheme: xzip://open?path=... -->
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="xzip">
+            <uap:DisplayName>XZip Protocol</uap:DisplayName>
+          </uap:Protocol>
+        </uap:Extension>
+
+        <!-- Classic context menu (Windows 10 1809+) -->
+        <com:Extension Category="windows.comServer">
+          <com:ComServer>
+            <com:SurrogateServer DisplayName="XZip Shell Extension">
+              <com:Class Id="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C12" Path="XZip.ShellExt.dll" ThreadingModel="STA" />
+              <com:Class Id="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C13" Path="XZip.ShellExt.dll" ThreadingModel="STA" />
+              <com:Class Id="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C14" Path="XZip.ShellExt.dll" ThreadingModel="STA" />
+              <com:Class Id="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C15" Path="XZip.ShellExt.dll" ThreadingModel="STA" />
+            </com:SurrogateServer>
+          </com:ComServer>
+        </com:Extension>
+
+        <!-- Modern File Explorer context menu (Windows 11) -->
+        <desktop4:Extension Category="windows.fileExplorerContextMenus">
+          <desktop4:FileExplorerContextMenus>
+            <desktop4:ItemType Type=".zip">
+              <desktop4:Verb Id="XZipExtractHere" Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C12" />
+              <desktop4:Verb Id="XZipExtractTo"   Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C13" />
+              <desktop4:Verb Id="XZipOpenIn"      Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C15" />
+            </desktop4:ItemType>
+            <desktop4:ItemType Type=".7z">
+              <desktop4:Verb Id="XZipExtractHere" Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C12" />
+              <desktop4:Verb Id="XZipExtractTo"   Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C13" />
+              <desktop4:Verb Id="XZipOpenIn"      Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C15" />
+            </desktop4:ItemType>
+            <desktop4:ItemType Type=".tar">
+              <desktop4:Verb Id="XZipExtractHere" Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C12" />
+              <desktop4:Verb Id="XZipExtractTo"   Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C13" />
+              <desktop4:Verb Id="XZipOpenIn"      Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C15" />
+            </desktop4:ItemType>
+            <desktop4:ItemType Type=".tgz">
+              <desktop4:Verb Id="XZipExtractHere" Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C12" />
+              <desktop4:Verb Id="XZipExtractTo"   Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C13" />
+              <desktop4:Verb Id="XZipOpenIn"      Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C15" />
+            </desktop4:ItemType>
+            <desktop4:ItemType Type=".gz">
+              <desktop4:Verb Id="XZipExtractHere" Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C12" />
+            </desktop4:ItemType>
+            <desktop4:ItemType Type=".bz2">
+              <desktop4:Verb Id="XZipExtractHere" Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C12" />
+            </desktop4:ItemType>
+
+            <!-- Generic "Add to archive" for any file or folder. -->
+            <desktop5:ItemType Type="*">
+              <desktop5:Verb Id="XZipAddToArchive" Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C14" />
+            </desktop5:ItemType>
+            <desktop5:ItemType Type="Directory">
+              <desktop5:Verb Id="XZipAddToArchive" Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C14" />
+            </desktop5:ItemType>
+          </desktop4:FileExplorerContextMenus>
+        </desktop4:Extension>
+
+      </Extensions>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+
+</Package>

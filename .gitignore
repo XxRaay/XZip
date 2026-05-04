@@ -1,0 +1,71 @@
+## .NET / Visual Studio
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+ARM/
+ARM64/
+.vs/
+.vscode/
+.idea/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.opendb
+*.VC.db
+*.VC.opendb
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+## Build outputs
+[Aa]pp[Pp]ackages/
+[Bb]uild[Ll]og.*
+[Aa]rtifacts/
+TestResults/
+coverage*
+
+## NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+!packages/build/
+
+## MSIX / WinUI
+*.appx
+*.appxbundle
+*.msix
+*.msixbundle
+*.msixupload
+GeneratedFiles/
+
+## Tooling caches
+node_modules/
+.cache/
+
+## Misc
+*.swp
+*.bak
+*.tmp
+*.orig
+*~
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+## Secrets
+*.pfx
+*.snk
+!XZip.TestKey.snk

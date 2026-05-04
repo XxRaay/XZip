@@ -1,0 +1,71 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  core:
+    name: Core (build + test)
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+
+      - name: Restore
+        run: |
+          dotnet restore src/XZip.Core/XZip.Core.csproj
+          dotnet restore src/XZip.Helper/XZip.Helper.csproj
+          dotnet restore tests/XZip.Core.Tests/XZip.Core.Tests.csproj
+
+      - name: Build
+        run: |
+          dotnet build src/XZip.Core/XZip.Core.csproj -c Release --no-restore
+          dotnet build src/XZip.Helper/XZip.Helper.csproj -c Release --no-restore
+          dotnet build tests/XZip.Core.Tests/XZip.Core.Tests.csproj -c Release --no-restore
+
+      - name: Test
+        run: dotnet test tests/XZip.Core.Tests/XZip.Core.Tests.csproj -c Release --no-build --logger "trx;LogFileName=core-tests.trx"
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-test-results
+          path: '**/TestResults/*.trx'
+
+  app:
+    name: App (WinUI 3 build)
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        platform: [x64]
+        configuration: [Release]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+
+      - name: Add MSBuild to PATH
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore App
+        run: msbuild src/XZip.App/XZip.App.csproj -t:Restore -p:Configuration=${{ matrix.configuration }} -p:Platform=${{ matrix.platform }}
+
+      - name: Build App
+        run: msbuild src/XZip.App/XZip.App.csproj -p:Configuration=${{ matrix.configuration }} -p:Platform=${{ matrix.platform }} -p:WindowsPackageType=None

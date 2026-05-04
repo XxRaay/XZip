@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <data name="AppTitle"><value>XZip</value></data>
+  <data name="Nav_Open"><value>Open</value></data>
+  <data name="Nav_Create"><value>Create</value></data>
+  <data name="Nav_Recent"><value>Recent</value></data>
+  <data name="Nav_Settings"><value>Settings</value></data>
+
+  <data name="Toolbar_Open"><value>Open</value></data>
+  <data name="Toolbar_ExtractAll"><value>Extract all</value></data>
+  <data name="Toolbar_Search"><value>Search…</value></data>
+
+  <data name="Empty_Title"><value>Drop an archive here</value></data>
+  <data name="Empty_Hint"><value>ZIP, 7z, TAR, TAR.GZ, TAR.BZ2</value></data>
+  <data name="Empty_OpenButton"><value>Open archive…</value></data>
+
+  <data name="Create_Title"><value>Create archive</value></data>
+  <data name="Create_DropHint"><value>Drop files or folders into the zone below</value></data>
+  <data name="Create_AddFiles"><value>Add files</value></data>
+  <data name="Create_AddFolder"><value>Add folder</value></data>
+  <data name="Create_Clear"><value>Clear</value></data>
+  <data name="Create_Format"><value>Format</value></data>
+  <data name="Create_Level"><value>Compression level</value></data>
+  <data name="Create_Threads"><value>Threads</value></data>
+  <data name="Create_OutputPlaceholder"><value>Output archive path…</value></data>
+  <data name="Create_Browse"><value>Browse…</value></data>
+  <data name="Create_Compress"><value>Compress</value></data>
+
+  <data name="Recent_Title"><value>Recent archives</value></data>
+  <data name="Recent_Refresh"><value>Refresh</value></data>
+  <data name="Recent_Clear"><value>Clear</value></data>
+
+  <data name="Settings_Title"><value>Settings</value></data>
+  <data name="Settings_Theme"><value>Theme</value></data>
+  <data name="Settings_Theme_System"><value>System</value></data>
+  <data name="Settings_Theme_Light"><value>Light</value></data>
+  <data name="Settings_Theme_Dark"><value>Dark</value></data>
+  <data name="Settings_Backdrop"><value>Backdrop</value></data>
+  <data name="Settings_Backdrop_Mica"><value>Mica</value></data>
+  <data name="Settings_Backdrop_Acrylic"><value>Acrylic</value></data>
+  <data name="Settings_Backdrop_None"><value>None</value></data>
+  <data name="Settings_DefaultFormat"><value>Default format</value></data>
+  <data name="Settings_About"><value>About</value></data>
+  <data name="Settings_Version"><value>Version</value></data>
+</root>

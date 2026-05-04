@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Default">
+            <SolidColorBrush x:Key="XZipAccentBrush" Color="#5C8DEF" />
+            <SolidColorBrush x:Key="XZipDropZoneBorderBrush" Color="#605C8DEF" />
+            <SolidColorBrush x:Key="XZipDropZoneFillBrush" Color="#205C8DEF" />
+            <SolidColorBrush x:Key="XZipSurfaceBrush" Color="#22FFFFFF" />
+            <SolidColorBrush x:Key="XZipSurfaceStrokeBrush" Color="#33FFFFFF" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush x:Key="XZipAccentBrush" Color="#3060C0" />
+            <SolidColorBrush x:Key="XZipDropZoneBorderBrush" Color="#603060C0" />
+            <SolidColorBrush x:Key="XZipDropZoneFillBrush" Color="#203060C0" />
+            <SolidColorBrush x:Key="XZipSurfaceBrush" Color="#88FFFFFF" />
+            <SolidColorBrush x:Key="XZipSurfaceStrokeBrush" Color="#33000000" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="HighContrast">
+            <SolidColorBrush x:Key="XZipAccentBrush" Color="{ThemeResource SystemColorHighlightColor}" />
+            <SolidColorBrush x:Key="XZipDropZoneBorderBrush" Color="{ThemeResource SystemColorHighlightColor}" />
+            <SolidColorBrush x:Key="XZipDropZoneFillBrush" Color="{ThemeResource SystemColorWindowColor}" />
+            <SolidColorBrush x:Key="XZipSurfaceBrush" Color="{ThemeResource SystemColorWindowColor}" />
+            <SolidColorBrush x:Key="XZipSurfaceStrokeBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
+</ResourceDictionary>

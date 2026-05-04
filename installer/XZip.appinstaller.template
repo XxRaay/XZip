@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AppInstaller
+    Uri="{{APPINSTALLER_URI}}"
+    Version="{{VERSION}}"
+    xmlns="http://schemas.microsoft.com/appx/appinstaller/2018"
+    xmlns:main="http://schemas.microsoft.com/appx/manifest/foundation/windows10">
+  <MainPackage
+      Name="XZip"
+      Publisher="CN=XZip"
+      Version="{{VERSION}}"
+      ProcessorArchitecture="x64"
+      Uri="{{MSIX_URI}}" />
+
+  <UpdateSettings>
+    <OnLaunch HoursBetweenUpdateChecks="6" ShowPrompt="true" UpdateBlocksActivation="false" />
+    <AutomaticBackgroundTask />
+    <ForceUpdateFromAnyVersion>true</ForceUpdateFromAnyVersion>
+  </UpdateSettings>
+
+  <main:Dependencies>
+    <main:TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.22621.0" />
+  </main:Dependencies>
+</AppInstaller>

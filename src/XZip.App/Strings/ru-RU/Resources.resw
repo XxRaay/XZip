@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <data name="AppTitle"><value>XZip</value></data>
+  <data name="Nav_Open"><value>Открыть</value></data>
+  <data name="Nav_Create"><value>Создать</value></data>
+  <data name="Nav_Recent"><value>Недавние</value></data>
+  <data name="Nav_Settings"><value>Настройки</value></data>
+
+  <data name="Toolbar_Open"><value>Открыть</value></data>
+  <data name="Toolbar_ExtractAll"><value>Извлечь всё</value></data>
+  <data name="Toolbar_Search"><value>Поиск…</value></data>
+
+  <data name="Empty_Title"><value>Перетащите архив сюда</value></data>
+  <data name="Empty_Hint"><value>ZIP, 7z, TAR, TAR.GZ, TAR.BZ2</value></data>
+  <data name="Empty_OpenButton"><value>Открыть архив…</value></data>
+
+  <data name="Create_Title"><value>Создать архив</value></data>
+  <data name="Create_DropHint"><value>Перетащите файлы или папки в зону ниже</value></data>
+  <data name="Create_AddFiles"><value>Добавить файлы</value></data>
+  <data name="Create_AddFolder"><value>Добавить папку</value></data>
+  <data name="Create_Clear"><value>Очистить</value></data>
+  <data name="Create_Format"><value>Формат</value></data>
+  <data name="Create_Level"><value>Уровень сжатия</value></data>
+  <data name="Create_Threads"><value>Потоков</value></data>
+  <data name="Create_OutputPlaceholder"><value>Путь сохранения архива…</value></data>
+  <data name="Create_Browse"><value>Обзор…</value></data>
+  <data name="Create_Compress"><value>Сжать</value></data>
+
+  <data name="Recent_Title"><value>Недавние архивы</value></data>
+  <data name="Recent_Refresh"><value>Обновить</value></data>
+  <data name="Recent_Clear"><value>Очистить</value></data>
+
+  <data name="Settings_Title"><value>Настройки</value></data>
+  <data name="Settings_Theme"><value>Тема</value></data>
+  <data name="Settings_Theme_System"><value>Системная</value></data>
+  <data name="Settings_Theme_Light"><value>Светлая</value></data>
+  <data name="Settings_Theme_Dark"><value>Тёмная</value></data>
+  <data name="Settings_Backdrop"><value>Фоновый эффект</value></data>
+  <data name="Settings_Backdrop_Mica"><value>Mica</value></data>
+  <data name="Settings_Backdrop_Acrylic"><value>Acrylic</value></data>
+  <data name="Settings_Backdrop_None"><value>Нет</value></data>
+  <data name="Settings_DefaultFormat"><value>Формат по умолчанию</value></data>
+  <data name="Settings_About"><value>О программе</value></data>
+  <data name="Settings_Version"><value>Версия</value></data>
+</root>
