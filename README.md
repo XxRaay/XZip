@@ -12,6 +12,7 @@ Built with **.NET 8** and **WinUI 3** (Windows App SDK 1.7+), powered by
 | Area              | Status   | Notes                                                                  |
 | ----------------- | -------- | ---------------------------------------------------------------------- |
 | ZIP               | done     | Read + write, parallel deflate via TPL Dataflow                        |
+| ZIP encryption    | done     | Password-protected ZIP creation with optional AES-256                  |
 | 7z                | done     | Read-only (SharpCompress limitation)                                   |
 | TAR / TGZ / TBZ2  | done     | Read + write                                                           |
 | GZ / BZ2          | partial  | Detected; single-stream extract                                        |

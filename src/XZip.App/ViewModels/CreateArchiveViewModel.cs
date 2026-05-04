@@ -34,6 +34,12 @@ public partial class CreateArchiveViewModel : ObservableObject
     private int _maxParallelism = Environment.ProcessorCount;
 
     [ObservableProperty]
+    private string? _password;
+
+    [ObservableProperty]
+    private bool _useAesEncryption = true;
+
+    [ObservableProperty]
     private double _progressPercentage;
 
     [ObservableProperty]
@@ -51,6 +57,7 @@ public partial class CreateArchiveViewModel : ObservableObject
 
     public bool IsIdle => !IsBusy;
     public bool HasItems => ItemCount > 0;
+    public bool IsZipFormat => Format == ArchiveFormat.Zip;
 
     public ObservableCollection<string> SourcePaths { get; } = new();
 
@@ -129,6 +136,8 @@ public partial class CreateArchiveViewModel : ObservableObject
                 Format = Format,
                 CompressionLevel = CompressionLevel,
                 MaxDegreeOfParallelism = MaxParallelism,
+                Password = IsZipFormat && !string.IsNullOrWhiteSpace(Password) ? Password : null,
+                UseAesEncryption = IsZipFormat && !string.IsNullOrWhiteSpace(Password) && UseAesEncryption,
             }, progress, ct);
         }
         finally
@@ -142,6 +151,14 @@ public partial class CreateArchiveViewModel : ObservableObject
     partial void OnIsBusyChanged(bool value) => CompressCommand.NotifyCanExecuteChanged();
     partial void OnItemCountChanged(int value) => CompressCommand.NotifyCanExecuteChanged();
     partial void OnOutputPathChanged(string? value) => CompressCommand.NotifyCanExecuteChanged();
+    partial void OnFormatChanged(ArchiveFormat value)
+    {
+        OnPropertyChanged(nameof(IsZipFormat));
+        if (!IsZipFormat)
+        {
+            Password = null;
+        }
+    }
 
     private IReadOnlyList<SourceItem> BuildItems()
     {

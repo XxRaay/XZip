@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="SharpCompress" />
+    <PackageReference Include="SharpZipLib" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
     <PackageReference Include="System.Threading.Tasks.Dataflow" />
   </ItemGroup>

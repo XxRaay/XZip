@@ -1,5 +1,7 @@
 using System.Runtime.CompilerServices;
 
+using ICSharpCode.SharpZipLib.Zip;
+
 using SharpCompress.Archives;
 using SharpCompress.Archives.Zip;
 using SharpCompress.Common;
@@ -158,6 +160,11 @@ public sealed class ZipArchiveProvider : IArchiveProvider
         IProgress<ArchiveProgress>? progress,
         CancellationToken cancellationToken)
     {
+        if (!string.IsNullOrWhiteSpace(options.Password))
+        {
+            return CreateEncryptedAsync(outputPath, items, options, progress, cancellationToken);
+        }
+
         if (options.MaxDegreeOfParallelism > 1 && items.Count(i => !i.IsDirectory) > 1)
         {
             var tracker = new ProgressTracker(progress);
@@ -204,6 +211,72 @@ public sealed class ZipArchiveProvider : IArchiveProvider
                 tracker.CompleteItem();
             }
 
+            tracker.Finish();
+        }, cancellationToken);
+    }
+
+    private static Task CreateEncryptedAsync(
+        string outputPath,
+        IReadOnlyList<SourceItem> items,
+        CreateOptions options,
+        IProgress<ArchiveProgress>? progress,
+        CancellationToken cancellationToken)
+    {
+        var tracker = new ProgressTracker(progress);
+        tracker.SetTotal(items.Where(i => !i.IsDirectory).Sum(i => i.Size), items.Count);
+
+        return Task.Run(() =>
+        {
+            using var fs = File.Create(outputPath);
+            using var zip = new ZipOutputStream(fs)
+            {
+                IsStreamOwner = true,
+                Password = options.Password!,
+            };
+
+            zip.SetLevel(MapSharpZipLevel(options.CompressionLevel));
+
+            foreach (var item in items)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                tracker.BeginItem(item.EntryPath, item.Size);
+
+                var entryName = item.EntryPath.Replace('\\', '/');
+                if (item.IsDirectory && !entryName.EndsWith('/'))
+                {
+                    entryName += "/";
+                }
+
+                var entry = new ZipEntry(entryName)
+                {
+                    DateTime = item.LastModified.Kind == DateTimeKind.Unspecified
+                        ? DateTime.SpecifyKind(item.LastModified, DateTimeKind.Local)
+                        : item.LastModified.ToLocalTime(),
+                };
+
+                if (item.IsDirectory)
+                {
+                    zip.PutNextEntry(entry);
+                    zip.CloseEntry();
+                    tracker.CompleteItem();
+                    continue;
+                }
+
+                entry.Size = item.Size;
+                entry.AESKeySize = options.UseAesEncryption ? 256 : 0;
+
+                zip.PutNextEntry(entry);
+                using (var src = File.OpenRead(item.AbsolutePath))
+                {
+                    src.CopyTo(zip);
+                }
+
+                zip.CloseEntry();
+                tracker.AddBytes(item.Size);
+                tracker.CompleteItem();
+            }
+
+            zip.Finish();
             tracker.Finish();
         }, cancellationToken);
     }
@@ -306,6 +379,8 @@ public sealed class ZipArchiveProvider : IArchiveProvider
         8 => CompressionLevel.Level8,
         _ => CompressionLevel.BestCompression,
     };
+
+    private static int MapSharpZipLevel(int level) => Math.Clamp(level, 0, 9);
 
     private static ArchiveEntry Map(ZipArchiveEntry e) => new()
     {

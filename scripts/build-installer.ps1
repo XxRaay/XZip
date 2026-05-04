@@ -155,11 +155,14 @@ if ($BaseUri) {
 }
 
 Write-Host ""
-Write-Host "Installer ready:"
+Write-Host "Done. Installer package created:"
 Write-Host "  MSIX: $($msix.FullName)"
 if ($BaseUri) {
     Write-Host "  AppInstaller: $appInstallerOut"
 }
 Write-Host ""
-Write-Host "Local install command:"
+Write-Host "Install from repository root:"
+Write-Host "  powershell -ExecutionPolicy Bypass -File .\scripts\install-msix.ps1"
+Write-Host ""
+Write-Host "Or from any directory:"
 Write-Host "  powershell -ExecutionPolicy Bypass -File `"$repoRoot\scripts\install-msix.ps1`""

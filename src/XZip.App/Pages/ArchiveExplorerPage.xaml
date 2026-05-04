@@ -121,6 +121,7 @@
                           x:Name="EntriesList"
                           ItemsSource="{x:Bind ViewModel.VisibleEntries, Mode=OneWay}"
                           SelectionMode="Extended"
+                          SelectionChanged="Entries_SelectionChanged"
                           DoubleTapped="Entries_DoubleTapped"
                           CanDragItems="True"
                           DragItemsStarting="Entries_DragItemsStarting"
@@ -185,7 +186,53 @@
                         </DataTemplate>
                     </ListView.HeaderTemplate>
                 </ListView>
+
+                <Button HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,0,20"
+                        Style="{StaticResource AccentButtonStyle}"
+                        Visibility="{x:Bind ViewModel.HasSelection, Mode=OneWay, Converter={StaticResource BoolToVis}}"
+                        Click="ExtractSelected_Click">
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <FontIcon Glyph="&#xE7B8;" />
+                        <TextBlock x:Uid="ArchiveExplorer_ExtractSelected_Text" />
+                    </StackPanel>
+                </Button>
             </Grid>
+
+            <Border Background="#80000000"
+                    CornerRadius="12"
+                    Padding="0"
+                    Visibility="{x:Bind ViewModel.IsPasswordPromptVisible, Mode=OneWay, Converter={StaticResource BoolToVis}}">
+                <Grid HorizontalAlignment="Center"
+                      VerticalAlignment="Center">
+                    <Border MinWidth="420"
+                            MaxWidth="520"
+                            CornerRadius="12"
+                            Padding="20"
+                            Background="{ThemeResource LayerFillColorDefaultBrush}"
+                            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                            BorderThickness="1">
+                        <StackPanel Spacing="12">
+                            <TextBlock x:Uid="ArchiveExplorer_PasswordPrompt_Title"
+                                       Style="{StaticResource TitleTextBlockStyle}" />
+                            <TextBlock Text="{x:Bind ViewModel.PasswordPromptMessage, Mode=OneWay}"
+                                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                       TextWrapping="WrapWholeWords" />
+                            <PasswordBox x:Uid="ArchiveExplorer_PasswordPrompt_PasswordBox"
+                                         Password="{x:Bind ViewModel.PasswordInput, Mode=TwoWay}" />
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Right"
+                                        Spacing="8">
+                                <Button x:Uid="ArchiveExplorer_PasswordPrompt_CancelButton" Click="CancelPasswordPrompt_Click" />
+                                <Button x:Uid="ArchiveExplorer_PasswordPrompt_OpenButton"
+                                        Style="{StaticResource AccentButtonStyle}"
+                                        Click="SubmitPassword_Click" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Border>
         </Grid>
 
         <!-- Status bar -->

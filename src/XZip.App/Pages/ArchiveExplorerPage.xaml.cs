@@ -5,6 +5,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Navigation;
 
 using Windows.ApplicationModel.DataTransfer;
+using Windows.ApplicationModel.Resources;
 using Windows.Storage;
 
 using XZip.App.Services;
@@ -19,6 +20,7 @@ public sealed partial class ArchiveExplorerPage : Page
 
     private readonly IFilePickerService _picker;
     private readonly IDialogService _dialogs;
+    private readonly ResourceLoader _resources = ResourceLoader.GetForViewIndependentUse();
 
     public ArchiveExplorerPage()
     {
@@ -54,15 +56,52 @@ public sealed partial class ArchiveExplorerPage : Page
 
         try
         {
-            await ViewModel.ExtractAllAsync(dest, null, CancellationToken.None);
+            var extracted = await ViewModel.ExtractAllAsync(dest, null, CancellationToken.None);
+            if (!extracted)
+            {
+                return;
+            }
+
             await _dialogs.ShowMessageAsync(
-                "Распаковка завершена",
-                $"Архив успешно извлечён в:\n{dest}",
+                T("Dialog_ExtractDone_Title"),
+                string.Format(T("Dialog_ExtractDone_All_Message"), dest),
                 XamlRoot);
         }
         catch (Exception ex)
         {
-            await _dialogs.ShowMessageAsync("Ошибка распаковки", ex.Message, XamlRoot);
+            await _dialogs.ShowMessageAsync(T("Dialog_ExtractError_Title"), ex.Message, XamlRoot);
+        }
+    }
+
+    private void Entries_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        ViewModel.SelectedCount = EntriesList.SelectedItems.Count;
+    }
+
+    private async void ExtractSelected_Click(object sender, RoutedEventArgs e)
+    {
+        var selected = EntriesList.SelectedItems.OfType<ArchiveEntryViewModel>().ToList();
+        if (selected.Count == 0) return;
+
+        var dest = await _picker.PickFolderAsync(((App)Application.Current).MainWindow);
+        if (string.IsNullOrEmpty(dest)) return;
+
+        try
+        {
+            var extracted = await ViewModel.ExtractSelectedAsync(dest, selected, null, CancellationToken.None);
+            if (!extracted)
+            {
+                return;
+            }
+
+            await _dialogs.ShowMessageAsync(
+                T("Dialog_ExtractDone_Title"),
+                string.Format(T("Dialog_ExtractDone_Selected_Message"), dest),
+                XamlRoot);
+        }
+        catch (Exception ex)
+        {
+            await _dialogs.ShowMessageAsync(T("Dialog_ExtractError_Title"), ex.Message, XamlRoot);
         }
     }
 
@@ -162,5 +201,21 @@ public sealed partial class ArchiveExplorerPage : Page
         }
 
         e.Data.SetStorageItems(files);
+    }
+
+    private async void SubmitPassword_Click(object sender, RoutedEventArgs e)
+    {
+        await ViewModel.ApplyPasswordAsync();
+    }
+
+    private void CancelPasswordPrompt_Click(object sender, RoutedEventArgs e)
+    {
+        ViewModel.HidePasswordPrompt();
+    }
+
+    private string T(string key)
+    {
+        var value = _resources.GetString(key);
+        return string.IsNullOrWhiteSpace(value) ? key : value;
     }
 }

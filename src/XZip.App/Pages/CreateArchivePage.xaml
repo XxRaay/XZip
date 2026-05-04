@@ -121,6 +121,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.Row="0" Grid.Column="0" Spacing="4">
@@ -163,6 +164,26 @@
                             <TextBlock Text="Обзор…" />
                         </StackPanel>
                     </Button>
+                </Grid>
+
+                <Grid Grid.Row="2"
+                      Grid.Column="0"
+                      Grid.ColumnSpan="3"
+                      ColumnSpacing="12"
+                      Visibility="{x:Bind ViewModel.IsZipFormat, Mode=OneWay, Converter={StaticResource BoolToVis}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Spacing="4">
+                        <TextBlock Text="Пароль ZIP" Style="{StaticResource CaptionTextBlockStyle}" />
+                        <PasswordBox PlaceholderText="Введите пароль для архива"
+                                     Password="{x:Bind ViewModel.Password, Mode=TwoWay}" />
+                    </StackPanel>
+                    <CheckBox Grid.Column="1"
+                              VerticalAlignment="Bottom"
+                              IsChecked="{x:Bind ViewModel.UseAesEncryption, Mode=TwoWay}"
+                              Content="AES-256" />
                 </Grid>
             </Grid>
         </Border>

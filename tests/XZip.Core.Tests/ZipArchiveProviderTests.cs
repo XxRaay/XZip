@@ -188,4 +188,32 @@ public class ZipArchiveProviderTests
         await act.Should().ThrowAsync<IOException>();
         File.Exists(Path.Combine(tmp.Path, "escaped.txt")).Should().BeFalse();
     }
+
+    [Fact]
+    public async Task Create_WithPasswordAndAes_RequiresPasswordToExtract()
+    {
+        using var tmp = new TempDir("zip-aes");
+        var sourceDir = Path.Combine(tmp.Path, "src");
+        Directory.CreateDirectory(sourceDir);
+        await File.WriteAllTextAsync(Path.Combine(sourceDir, "secret.txt"), "top secret");
+
+        var archivePath = Path.Combine(tmp.Path, "secret.zip");
+        var service = ArchiveServiceFactory.CreateDefault();
+
+        await service.CreateFromDirectoryAsync(sourceDir, archivePath, new CreateOptions
+        {
+            Format = ArchiveFormat.Zip,
+            Password = "Pa$$w0rd!",
+            UseAesEncryption = true,
+            MaxDegreeOfParallelism = 8,
+        });
+
+        var badExtract = Path.Combine(tmp.Path, "bad");
+        var bad = async () => await service.ExtractAllAsync(archivePath, badExtract, "wrong");
+        await bad.Should().ThrowAsync<Exception>();
+
+        var extractDir = Path.Combine(tmp.Path, "ok");
+        await service.ExtractAllAsync(archivePath, extractDir, "Pa$$w0rd!");
+        (await File.ReadAllTextAsync(Path.Combine(extractDir, "secret.txt"))).Should().Be("top secret");
+    }
 }

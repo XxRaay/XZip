@@ -59,4 +59,31 @@
   <data name="Settings_DefaultFormat"><value>Формат по умолчанию</value></data>
   <data name="Settings_About"><value>О программе</value></data>
   <data name="Settings_Version"><value>Версия</value></data>
+
+  <data name="ArchiveExplorer_ExtractSelected_Text.Text"><value>Извлечь выбранное</value></data>
+  <data name="ArchiveExplorer_PasswordPrompt_Title.Text"><value>Введите пароль</value></data>
+  <data name="ArchiveExplorer_PasswordPrompt_PasswordBox.PlaceholderText"><value>Пароль архива</value></data>
+  <data name="ArchiveExplorer_PasswordPrompt_CancelButton.Content"><value>Отмена</value></data>
+  <data name="ArchiveExplorer_PasswordPrompt_OpenButton.Content"><value>Продолжить</value></data>
+
+  <data name="Status_OpeningArchive"><value>Открытие архива…</value></data>
+  <data name="Status_PasswordRequired"><value>Требуется пароль</value></data>
+  <data name="Status_ErrorPrefix"><value>Ошибка</value></data>
+  <data name="Status_VerifyingPassword"><value>Проверка пароля…</value></data>
+  <data name="Status_WrongPassword"><value>Неверный пароль</value></data>
+  <data name="Status_Extracting"><value>Распаковка…</value></data>
+  <data name="Status_ExtractingSelected"><value>Распаковка выбранного…</value></data>
+  <data name="Status_Done"><value>Готово</value></data>
+
+  <data name="PasswordPrompt_OpenFailed"><value>Не удалось открыть архив без пароля. Введите пароль и повторите действие.</value></data>
+  <data name="PasswordPrompt_EnterPassword"><value>Введите пароль.</value></data>
+  <data name="PasswordPrompt_WrongPassword"><value>Неверный пароль. Попробуйте снова.</value></data>
+  <data name="PasswordPrompt_ActionNeedsPassword"><value>Для этого действия нужен пароль архива.</value></data>
+
+  <data name="Dialog_ExtractDone_Title"><value>Распаковка завершена</value></data>
+  <data name="Dialog_ExtractDone_All_Message"><value>Архив успешно извлечён в:
+{0}</value></data>
+  <data name="Dialog_ExtractDone_Selected_Message"><value>Выбранные элементы извлечены в:
+{0}</value></data>
+  <data name="Dialog_ExtractError_Title"><value>Ошибка распаковки</value></data>
 </root>
