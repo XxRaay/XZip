@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.Windows.AppLifecycle;
+using Windows.Globalization;
 
 using XZip.App.Services;
 using XZip.App.Pages;
@@ -31,8 +32,20 @@ public partial class App : Application
 
     protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
     {
+        ApplyLanguageFromSettings();
         var launchPath = TryGetArchivePathFromActivation() ?? TryGetArchivePathFromLaunchArgs(args.Arguments);
         EnsureWindowAndActivate(launchPath);
+    }
+
+    private static void ApplyLanguageFromSettings()
+    {
+        var settings = Services.GetRequiredService<ISettingsService>();
+        ApplicationLanguages.PrimaryLanguageOverride = settings.Language switch
+        {
+            "ru" => "ru-RU",
+            "en" => "en-US",
+            _ => string.Empty,
+        };
     }
 
     private static IServiceProvider ConfigureServices()

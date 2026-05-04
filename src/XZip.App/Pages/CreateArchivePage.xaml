@@ -23,8 +23,8 @@
 
         <!-- Heading -->
         <StackPanel Grid.Row="0" Spacing="4">
-            <TextBlock Text="Создать архив" Style="{StaticResource TitleTextBlockStyle}" />
-            <TextBlock Text="Перетащите файлы или папки в зону ниже"
+            <TextBlock x:Uid="Create_TitleText" Style="{StaticResource TitleTextBlockStyle}" />
+            <TextBlock x:Uid="Create_DropHintText"
                        Style="{StaticResource BodyTextBlockStyle}"
                        Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
         </StackPanel>
@@ -56,26 +56,26 @@
                             <FontIcon Glyph="&#xE8B7;" Foreground="{ThemeResource XZipAccentBrush}" />
                             <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}">
                                 <Run Text="{x:Bind ViewModel.ItemCount, Mode=OneWay}" />
-                                <Run Text=" файлов · " />
+                                <Run x:Uid="Create_ItemCountSeparatorRun" />
                                 <Run Text="{x:Bind ViewModel.TotalSize, Mode=OneWay, Converter={StaticResource SizeConverter}}" />
                             </TextBlock>
                         </StackPanel>
                         <Button Grid.Column="1" Click="AddFiles_Click">
                             <StackPanel Orientation="Horizontal" Spacing="6">
                                 <FontIcon Glyph="&#xE710;" />
-                                <TextBlock Text="Добавить файлы" />
+                                <TextBlock x:Uid="Create_AddFilesText" />
                             </StackPanel>
                         </Button>
                         <Button Grid.Column="2" Click="AddFolder_Click">
                             <StackPanel Orientation="Horizontal" Spacing="6">
                                 <FontIcon Glyph="&#xE8B7;" />
-                                <TextBlock Text="Добавить папку" />
+                                <TextBlock x:Uid="Create_AddFolderText" />
                             </StackPanel>
                         </Button>
                         <Button Grid.Column="3" Click="Clear_Click">
                             <StackPanel Orientation="Horizontal" Spacing="6">
                                 <FontIcon Glyph="&#xE74D;" />
-                                <TextBlock Text="Очистить" />
+                                <TextBlock x:Uid="Create_ClearText" />
                             </StackPanel>
                         </Button>
                     </Grid>
@@ -125,7 +125,7 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.Row="0" Grid.Column="0" Spacing="4">
-                    <TextBlock Text="Формат" Style="{StaticResource CaptionTextBlockStyle}" />
+                    <TextBlock x:Uid="Create_FormatLabel" Style="{StaticResource CaptionTextBlockStyle}" />
                     <ComboBox ItemsSource="{x:Bind ViewModel.AvailableFormats, Mode=OneTime}"
                               SelectedItem="{x:Bind ViewModel.Format, Mode=TwoWay}"
                               HorizontalAlignment="Stretch" />
@@ -133,7 +133,7 @@
 
                 <StackPanel Grid.Row="0" Grid.Column="1" Spacing="4">
                     <TextBlock>
-                        <Run Text="Уровень сжатия: " />
+                        <Run x:Uid="Create_LevelPrefixRun" />
                         <Run Text="{x:Bind ViewModel.CompressionLevel, Mode=OneWay}" />
                     </TextBlock>
                     <Slider Minimum="0" Maximum="9"
@@ -144,7 +144,7 @@
                 </StackPanel>
 
                 <StackPanel Grid.Row="0" Grid.Column="2" Spacing="4">
-                    <TextBlock Text="Потоков" Style="{StaticResource CaptionTextBlockStyle}" />
+                    <TextBlock x:Uid="Create_ThreadsLabel" Style="{StaticResource CaptionTextBlockStyle}" />
                     <NumberBox Minimum="1" Maximum="64"
                                SpinButtonPlacementMode="Inline"
                                Value="{x:Bind ViewModel.MaxParallelism, Mode=TwoWay}" />
@@ -155,13 +155,13 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <TextBox Grid.Column="0"
-                             PlaceholderText="Путь сохранения архива…"
+                    <TextBox x:Uid="Create_OutputPathBox"
+                             Grid.Column="0"
                              Text="{x:Bind ViewModel.OutputPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <Button Grid.Column="1" Click="ChooseOutput_Click">
                         <StackPanel Orientation="Horizontal" Spacing="6">
                             <FontIcon Glyph="&#xE8DA;" />
-                            <TextBlock Text="Обзор…" />
+                            <TextBlock x:Uid="Create_BrowseText" />
                         </StackPanel>
                     </Button>
                 </Grid>
@@ -176,14 +176,14 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Spacing="4">
-                        <TextBlock Text="Пароль ZIP" Style="{StaticResource CaptionTextBlockStyle}" />
-                        <PasswordBox PlaceholderText="Введите пароль для архива"
+                        <TextBlock x:Uid="Create_ZipPasswordLabel" Style="{StaticResource CaptionTextBlockStyle}" />
+                        <PasswordBox x:Uid="Create_ZipPasswordBox"
                                      Password="{x:Bind ViewModel.Password, Mode=TwoWay}" />
                     </StackPanel>
                     <CheckBox Grid.Column="1"
                               VerticalAlignment="Bottom"
                               IsChecked="{x:Bind ViewModel.UseAesEncryption, Mode=TwoWay}"
-                              Content="AES-256" />
+                              x:Uid="Create_AesCheckBox" />
                 </Grid>
             </Grid>
         </Border>
@@ -203,9 +203,9 @@
                 <TextBlock Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                            Style="{StaticResource CaptionTextBlockStyle}">
                     <Run Text="{x:Bind ViewModel.ProgressItem, Mode=OneWay}" />
-                    <Run Text=" · " />
+                    <Run x:Uid="Create_ProgressSeparator1Run" />
                     <Run Text="{x:Bind ViewModel.ProgressSpeed, Mode=OneWay}" />
-                    <Run Text=" · " />
+                    <Run x:Uid="Create_ProgressSeparator2Run" />
                     <Run Text="{x:Bind ViewModel.ProgressEta, Mode=OneWay}" />
                 </TextBlock>
             </StackPanel>
@@ -215,7 +215,7 @@
                     Command="{x:Bind ViewModel.CompressCommand}">
                 <StackPanel Orientation="Horizontal" Spacing="6">
                     <FontIcon Glyph="&#xE74E;" />
-                    <TextBlock Text="Сжать" />
+                    <TextBlock x:Uid="Create_CompressText" />
                 </StackPanel>
             </Button>
         </Grid>

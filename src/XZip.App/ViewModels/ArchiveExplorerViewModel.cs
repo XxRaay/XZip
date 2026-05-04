@@ -105,7 +105,10 @@ public partial class ArchiveExplorerViewModel : ObservableObject, IDisposable
             UpdateBreadcrumbs();
             ApplyFilter();
             _settings.AddRecent(path);
-            StatusText = $"{list.Count} элементов · {ArchiveEntryViewModel.FormatSize(new FileInfo(path).Length)}";
+            StatusText = string.Format(
+                T("Status_ItemsSummary"),
+                list.Count,
+                ArchiveEntryViewModel.FormatSize(new FileInfo(path).Length));
         }
         catch (Exception ex)
         {
@@ -175,7 +178,10 @@ public partial class ArchiveExplorerViewModel : ObservableObject, IDisposable
             UpdateBreadcrumbs();
             ApplyFilter();
             _settings.AddRecent(path);
-            StatusText = $"{list.Count} элементов · {ArchiveEntryViewModel.FormatSize(new FileInfo(path).Length)}";
+            StatusText = string.Format(
+                T("Status_ItemsSummary"),
+                list.Count,
+                ArchiveEntryViewModel.FormatSize(new FileInfo(path).Length));
             _pendingAction = pendingAction;
             _pendingDestination = pendingDestination;
             _pendingSelectedEntries = pendingSelectedEntries;

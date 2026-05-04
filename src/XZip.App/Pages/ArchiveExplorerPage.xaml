@@ -33,10 +33,10 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Click="Open_Click" ToolTipService.ToolTip="Открыть архив (Ctrl+O)">
+            <Button x:Uid="ArchiveExplorer_OpenButton" Grid.Column="0" Click="Open_Click">
                 <StackPanel Orientation="Horizontal" Spacing="6">
                     <FontIcon Glyph="&#xE8E5;" />
-                    <TextBlock Text="Открыть" />
+                    <TextBlock x:Uid="ArchiveExplorer_OpenButtonText" />
                 </StackPanel>
             </Button>
 
@@ -46,7 +46,7 @@
                     Style="{StaticResource AccentButtonStyle}">
                 <StackPanel Orientation="Horizontal" Spacing="6">
                     <FontIcon Glyph="&#xE7B8;" />
-                    <TextBlock Text="Извлечь всё" />
+                    <TextBlock x:Uid="ArchiveExplorer_ExtractAllText" />
                 </StackPanel>
             </Button>
 
@@ -56,7 +56,7 @@
             <Button Grid.Column="3"
                     Click="GoUp_Click"
                     Visibility="{x:Bind ViewModel.ArchivePath, Mode=OneWay, Converter={StaticResource NotEmptyToVisible}}"
-                    ToolTipService.ToolTip="Вверх">
+                    x:Uid="ArchiveExplorer_GoUpButton">
                 <FontIcon Glyph="&#xE74A;" />
             </Button>
 
@@ -69,7 +69,7 @@
 
             <AutoSuggestBox Grid.Column="6"
                             QueryIcon="Find"
-                            PlaceholderText="Поиск…"
+                            x:Uid="ArchiveExplorer_SearchBox"
                             Width="240"
                             Text="{x:Bind ViewModel.SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             Visibility="{x:Bind ViewModel.ArchivePath, Mode=OneWay, Converter={StaticResource NotEmptyToVisible}}" />
@@ -97,18 +97,18 @@
                                   Foreground="{ThemeResource XZipAccentBrush}" />
                         <TextBlock Style="{StaticResource SubtitleTextBlockStyle}"
                                    HorizontalAlignment="Center"
-                                   Text="Перетащите архив сюда" />
+                                   x:Uid="ArchiveExplorer_EmptyTitle" />
                         <TextBlock Style="{StaticResource BodyTextBlockStyle}"
                                    HorizontalAlignment="Center"
                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                   Text="ZIP, 7z, TAR, TAR.GZ, TAR.BZ2" />
+                                   x:Uid="ArchiveExplorer_EmptyHint" />
                         <Button HorizontalAlignment="Center"
                                 Style="{StaticResource AccentButtonStyle}"
                                 Click="Open_Click"
                                 Margin="0,8,0,0">
                             <StackPanel Orientation="Horizontal" Spacing="6">
                                 <FontIcon Glyph="&#xE8E5;" />
-                                <TextBlock Text="Открыть архив…" />
+                                <TextBlock x:Uid="ArchiveExplorer_EmptyOpenButtonText" />
                             </StackPanel>
                         </Button>
                     </StackPanel>
@@ -177,11 +177,11 @@
                                     <ColumnDefinition Width="80" />
                                     <ColumnDefinition Width="160" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="1" Text="Имя" Style="{StaticResource CaptionTextBlockStyle}" Opacity="0.6" />
-                                <TextBlock Grid.Column="2" Text="Размер" Style="{StaticResource CaptionTextBlockStyle}" Opacity="0.6" />
-                                <TextBlock Grid.Column="3" Text="Сжатый" Style="{StaticResource CaptionTextBlockStyle}" Opacity="0.6" />
-                                <TextBlock Grid.Column="4" Text="Сжатие" Style="{StaticResource CaptionTextBlockStyle}" Opacity="0.6" />
-                                <TextBlock Grid.Column="5" Text="Изменён" Style="{StaticResource CaptionTextBlockStyle}" Opacity="0.6" />
+                                <TextBlock x:Uid="ArchiveExplorer_HeaderName" Grid.Column="1" Style="{StaticResource CaptionTextBlockStyle}" Opacity="0.6" />
+                                <TextBlock x:Uid="ArchiveExplorer_HeaderSize" Grid.Column="2" Style="{StaticResource CaptionTextBlockStyle}" Opacity="0.6" />
+                                <TextBlock x:Uid="ArchiveExplorer_HeaderCompressed" Grid.Column="3" Style="{StaticResource CaptionTextBlockStyle}" Opacity="0.6" />
+                                <TextBlock x:Uid="ArchiveExplorer_HeaderRatio" Grid.Column="4" Style="{StaticResource CaptionTextBlockStyle}" Opacity="0.6" />
+                                <TextBlock x:Uid="ArchiveExplorer_HeaderModified" Grid.Column="5" Style="{StaticResource CaptionTextBlockStyle}" Opacity="0.6" />
                             </Grid>
                         </DataTemplate>
                     </ListView.HeaderTemplate>

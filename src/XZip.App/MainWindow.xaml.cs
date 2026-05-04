@@ -6,6 +6,8 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Windows.ApplicationModel.Resources;
+using Windows.System;
 
 using WinUIEx;
 
@@ -17,6 +19,8 @@ namespace XZip.App;
 
 public sealed partial class MainWindow : WindowEx
 {
+    private const string GitHubRepoUrl = "https://github.com/XxRaay/XZip";
+    private readonly ResourceLoader _resources = ResourceLoader.GetForViewIndependentUse();
     private readonly INavigationService _nav;
     private readonly ISettingsService _settings;
 
@@ -30,7 +34,7 @@ public sealed partial class MainWindow : WindowEx
 
         InitializeComponent();
 
-        Title = "XZip";
+        Title = T("AppTitle");
         this.SetWindowSize(1200, 760);
         this.CenterOnScreen();
         TrySetWindowIcon();
@@ -111,12 +115,49 @@ public sealed partial class MainWindow : WindowEx
 
     public void ApplyBackdropFromSettings() => ApplyBackdrop(_settings.Backdrop);
 
-    private void Nav_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+    private async void Nav_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
         if (args.SelectedItem is NavigationViewItem item && item.Tag is string tag)
         {
+            if (tag == "github")
+            {
+                var previousTag = ViewModel.SelectedTag;
+                await Launcher.LaunchUriAsync(new Uri(GitHubRepoUrl));
+
+                var previousItem = FindItemByTag(previousTag);
+                if (previousItem is not null)
+                {
+                    sender.SelectedItem = previousItem;
+                }
+
+                return;
+            }
+
             ViewModel.SelectedTag = tag;
             _nav.NavigateToTag(tag);
         }
+    }
+
+    private NavigationViewItem? FindItemByTag(string? tag)
+    {
+        if (string.IsNullOrWhiteSpace(tag))
+        {
+            return null;
+        }
+
+        static NavigationViewItem? MatchByTag(IList<object> items, string tagToFind)
+        {
+            return items
+                .OfType<NavigationViewItem>()
+                .FirstOrDefault(i => string.Equals(i.Tag as string, tagToFind, StringComparison.Ordinal));
+        }
+
+        return MatchByTag(Nav.MenuItems, tag) ?? MatchByTag(Nav.FooterMenuItems, tag);
+    }
+
+    private string T(string key)
+    {
+        var value = _resources.GetString(key);
+        return string.IsNullOrWhiteSpace(value) ? key : value;
     }
 }

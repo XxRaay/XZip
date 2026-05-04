@@ -146,7 +146,7 @@ public sealed partial class ArchiveExplorerPage : Page
         if (e.DataView.Contains(StandardDataFormats.StorageItems))
         {
             e.AcceptedOperation = DataPackageOperation.Link;
-            e.DragUIOverride.Caption = "Открыть архив";
+            e.DragUIOverride.Caption = T("ArchiveExplorer_DragOpenCaption");
             e.DragUIOverride.IsCaptionVisible = true;
             e.DragUIOverride.IsContentVisible = true;
         }
@@ -166,7 +166,7 @@ public sealed partial class ArchiveExplorerPage : Page
         }
 
         var deferral = e.Data.RequestedOperation = DataPackageOperation.Copy;
-        e.Data.Properties.Title = "Файлы из XZip";
+        e.Data.Properties.Title = T("ArchiveExplorer_DragFilesTitle");
 
         var temp = Path.Combine(Path.GetTempPath(), "XZip", "drag-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(temp);

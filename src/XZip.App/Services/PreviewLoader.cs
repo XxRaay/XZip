@@ -3,6 +3,7 @@ using System.Text;
 
 using Microsoft.UI.Xaml.Media.Imaging;
 
+using Windows.ApplicationModel.Resources;
 using Windows.Storage.Streams;
 
 using XZip.App.ViewModels;
@@ -31,6 +32,7 @@ public static class PreviewLoader
     {
         ".png", ".jpg", ".jpeg", ".gif", ".bmp", ".webp", ".tiff", ".ico",
     };
+    private static readonly ResourceLoader Resources = ResourceLoader.GetForViewIndependentUse();
 
     public static async Task LoadAsync(PreviewViewModel vm, ArchiveEntryViewModel entry,
         Func<CancellationToken, Task<Stream?>> openStream, CancellationToken ct)
@@ -40,7 +42,7 @@ public static class PreviewLoader
 
         if (entry.IsDirectory)
         {
-            vm.StatusText = "Папка";
+            vm.StatusText = T("Preview_Folder");
             return;
         }
 
@@ -52,7 +54,7 @@ public static class PreviewLoader
             if (size > TextLimit)
             {
                 vm.Kind = PreviewKind.TooLarge;
-                vm.StatusText = $"Файл слишком большой ({ArchiveEntryViewModel.FormatSize(size)})";
+                vm.StatusText = string.Format(T("Preview_FileTooLarge"), ArchiveEntryViewModel.FormatSize(size));
                 return;
             }
             await using var s = await openStream(ct).ConfigureAwait(false);
@@ -68,7 +70,7 @@ public static class PreviewLoader
             if (size > ImageLimit)
             {
                 vm.Kind = PreviewKind.TooLarge;
-                vm.StatusText = $"Изображение слишком большое ({ArchiveEntryViewModel.FormatSize(size)})";
+                vm.StatusText = string.Format(T("Preview_ImageTooLarge"), ArchiveEntryViewModel.FormatSize(size));
                 return;
             }
             await using var s = await openStream(ct).ConfigureAwait(false);
@@ -99,8 +101,14 @@ public static class PreviewLoader
             }
             vm.HexContent = FormatHex(head.AsSpan(0, read));
             vm.Kind = PreviewKind.Hex;
-            vm.StatusText = $"Двоичный файл — показаны первые {ArchiveEntryViewModel.FormatSize(read)}";
+            vm.StatusText = string.Format(T("Preview_BinaryHead"), ArchiveEntryViewModel.FormatSize(read));
         }
+    }
+
+    private static string T(string key)
+    {
+        var value = Resources.GetString(key);
+        return string.IsNullOrWhiteSpace(value) ? key : value;
     }
 
     private static string FormatHex(ReadOnlySpan<byte> bytes)

@@ -8,7 +8,7 @@
     xmlns:winex="using:WinUIEx"
     xmlns:converters="using:XZip.App.Converters"
     mc:Ignorable="d"
-    Title="XZip"
+    x:Uid="MainWindow"
     MinWidth="900"
     MinHeight="600">
 
@@ -35,11 +35,11 @@
                    Width="20" Height="20"
                    VerticalAlignment="Center" />
 
-            <TextBlock Grid.Column="1"
+            <TextBlock x:Uid="MainWindow_AppTitle"
+                       Grid.Column="1"
                        Margin="12,0,0,0"
                        VerticalAlignment="Center"
-                       Style="{StaticResource CaptionTextBlockStyle}"
-                       Text="XZip" />
+                       Style="{StaticResource CaptionTextBlockStyle}" />
         </Grid>
 
         <!-- Navigation -->
@@ -54,13 +54,14 @@
                         IsTitleBarAutoPaddingEnabled="False">
 
             <NavigationView.MenuItems>
-                <NavigationViewItem Tag="open" Content="Открыть" Icon="OpenFile" />
-                <NavigationViewItem Tag="create" Content="Создать" Icon="Add" />
-                <NavigationViewItem Tag="recent" Content="Недавние" Icon="ImportAll" />
+                <NavigationViewItem x:Uid="MainWindow_NavOpen" Tag="open" Icon="OpenFile" />
+                <NavigationViewItem x:Uid="MainWindow_NavCreate" Tag="create" Icon="Add" />
+                <NavigationViewItem x:Uid="MainWindow_NavRecent" Tag="recent" Icon="ImportAll" />
             </NavigationView.MenuItems>
 
             <NavigationView.FooterMenuItems>
-                <NavigationViewItem Tag="settings" Content="Настройки" Icon="Setting" />
+                <NavigationViewItem x:Uid="MainWindow_NavGitHub" Tag="github" Icon="Like" />
+                <NavigationViewItem x:Uid="MainWindow_NavSettings" Tag="settings" Icon="Setting" />
             </NavigationView.FooterMenuItems>
 
             <Frame x:Name="ContentFrame" />

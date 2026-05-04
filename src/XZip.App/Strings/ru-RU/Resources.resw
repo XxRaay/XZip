@@ -86,4 +86,74 @@
   <data name="Dialog_ExtractDone_Selected_Message"><value>Выбранные элементы извлечены в:
 {0}</value></data>
   <data name="Dialog_ExtractError_Title"><value>Ошибка распаковки</value></data>
+  <data name="MainWindow.Title"><value>XZip</value></data>
+  <data name="MainWindow_AppTitle.Text"><value>XZip</value></data>
+  <data name="MainWindow_NavOpen.Content"><value>Открыть</value></data>
+  <data name="MainWindow_NavCreate.Content"><value>Создать</value></data>
+  <data name="MainWindow_NavRecent.Content"><value>Недавние</value></data>
+  <data name="MainWindow_NavGitHub.Content"><value>Оцените на GitHub</value></data>
+  <data name="MainWindow_NavSettings.Content"><value>Настройки</value></data>
+
+  <data name="Settings_TitleText.Text"><value>Настройки</value></data>
+  <data name="Settings_Section_Appearance.Text"><value>Внешний вид</value></data>
+  <data name="Settings_ThemeLabel.Text"><value>Тема</value></data>
+  <data name="Settings_BackdropLabel.Text"><value>Фоновый эффект</value></data>
+  <data name="Settings_Section_Behavior.Text"><value>Поведение</value></data>
+  <data name="Settings_DefaultFormatLabel.Text"><value>Формат по умолчанию</value></data>
+  <data name="Settings_LanguageLabel.Text"><value>Язык</value></data>
+  <data name="Settings_LanguageRestartHint.Title"><value>Язык интерфейса</value></data>
+  <data name="Settings_LanguageRestartHint.Message"><value>Изменения языка применятся после перезапуска приложения.</value></data>
+  <data name="Settings_AboutLabel.Text"><value>О программе</value></data>
+  <data name="Settings_VersionPrefixRun.Text"><value>XZip · версия </value></data>
+  <data name="Settings_AboutDescription.Text"><value>Современный архиватор на .NET 8 + WinUI 3</value></data>
+  <data name="Settings_Language_System"><value>Системный</value></data>
+  <data name="Settings_Language_Russian"><value>Русский</value></data>
+  <data name="Settings_Language_English"><value>English</value></data>
+
+  <data name="ArchiveExplorer_OpenButton.ToolTipService.ToolTip"><value>Открыть архив (Ctrl+O)</value></data>
+  <data name="ArchiveExplorer_OpenButtonText.Text"><value>Открыть</value></data>
+  <data name="ArchiveExplorer_ExtractAllText.Text"><value>Извлечь всё</value></data>
+  <data name="ArchiveExplorer_GoUpButton.ToolTipService.ToolTip"><value>Вверх</value></data>
+  <data name="ArchiveExplorer_SearchBox.PlaceholderText"><value>Поиск…</value></data>
+  <data name="ArchiveExplorer_EmptyTitle.Text"><value>Перетащите архив сюда</value></data>
+  <data name="ArchiveExplorer_EmptyHint.Text"><value>ZIP, 7z, TAR, TAR.GZ, TAR.BZ2</value></data>
+  <data name="ArchiveExplorer_EmptyOpenButtonText.Text"><value>Открыть архив…</value></data>
+  <data name="ArchiveExplorer_HeaderName.Text"><value>Имя</value></data>
+  <data name="ArchiveExplorer_HeaderSize.Text"><value>Размер</value></data>
+  <data name="ArchiveExplorer_HeaderCompressed.Text"><value>Сжатый</value></data>
+  <data name="ArchiveExplorer_HeaderRatio.Text"><value>Сжатие</value></data>
+  <data name="ArchiveExplorer_HeaderModified.Text"><value>Изменён</value></data>
+  <data name="ArchiveExplorer_DragOpenCaption"><value>Открыть архив</value></data>
+  <data name="ArchiveExplorer_DragFilesTitle"><value>Файлы из XZip</value></data>
+
+  <data name="Create_TitleText.Text"><value>Создать архив</value></data>
+  <data name="Create_DropHintText.Text"><value>Перетащите файлы или папки в зону ниже</value></data>
+  <data name="Create_ItemCountSeparatorRun.Text"><value> файлов · </value></data>
+  <data name="Create_AddFilesText.Text"><value>Добавить файлы</value></data>
+  <data name="Create_AddFolderText.Text"><value>Добавить папку</value></data>
+  <data name="Create_ClearText.Text"><value>Очистить</value></data>
+  <data name="Create_FormatLabel.Text"><value>Формат</value></data>
+  <data name="Create_LevelPrefixRun.Text"><value>Уровень сжатия: </value></data>
+  <data name="Create_ThreadsLabel.Text"><value>Потоков</value></data>
+  <data name="Create_OutputPathBox.PlaceholderText"><value>Путь сохранения архива…</value></data>
+  <data name="Create_BrowseText.Text"><value>Обзор…</value></data>
+  <data name="Create_ZipPasswordLabel.Text"><value>Пароль ZIP</value></data>
+  <data name="Create_ZipPasswordBox.PlaceholderText"><value>Введите пароль для архива</value></data>
+  <data name="Create_AesCheckBox.Content"><value>AES-256</value></data>
+  <data name="Create_ProgressSeparator1Run.Text"><value> · </value></data>
+  <data name="Create_ProgressSeparator2Run.Text"><value> · </value></data>
+  <data name="Create_CompressText.Text"><value>Сжать</value></data>
+  <data name="Create_DragAddCaption"><value>Добавить в архив</value></data>
+
+  <data name="Recent_TitleText.Text"><value>Недавние архивы</value></data>
+  <data name="Recent_RefreshText.Text"><value>Обновить</value></data>
+  <data name="Recent_ClearText.Text"><value>Очистить</value></data>
+
+  <data name="Preview_Folder"><value>Папка</value></data>
+  <data name="Preview_FileTooLarge"><value>Файл слишком большой ({0})</value></data>
+  <data name="Preview_ImageTooLarge"><value>Изображение слишком большое ({0})</value></data>
+  <data name="Preview_BinaryHead"><value>Двоичный файл — показаны первые {0}</value></data>
+  <data name="Status_ItemsSummary"><value>{0} элементов · {1}</value></data>
+  <data name="Dialog_Ok"><value>OK</value></data>
+  <data name="Dialog_Cancel"><value>Отмена</value></data>
 </root>

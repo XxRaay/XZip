@@ -17,18 +17,18 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="Недавние архивы" Style="{StaticResource TitleTextBlockStyle}" />
+            <TextBlock x:Uid="Recent_TitleText" Grid.Column="0" Style="{StaticResource TitleTextBlockStyle}" />
             <Button Grid.Column="1" Margin="0,0,8,0"
                     Click="Refresh_Click">
                 <StackPanel Orientation="Horizontal" Spacing="6">
                     <FontIcon Glyph="&#xE72C;" />
-                    <TextBlock Text="Обновить" />
+                    <TextBlock x:Uid="Recent_RefreshText" />
                 </StackPanel>
             </Button>
             <Button Grid.Column="2" Click="Clear_Click">
                 <StackPanel Orientation="Horizontal" Spacing="6">
                     <FontIcon Glyph="&#xE74D;" />
-                    <TextBlock Text="Очистить" />
+                    <TextBlock x:Uid="Recent_ClearText" />
                 </StackPanel>
             </Button>
         </Grid>

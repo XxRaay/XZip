@@ -86,4 +86,74 @@
   <data name="Dialog_ExtractDone_Selected_Message"><value>Selected items extracted to:
 {0}</value></data>
   <data name="Dialog_ExtractError_Title"><value>Extraction error</value></data>
+  <data name="MainWindow.Title"><value>XZip</value></data>
+  <data name="MainWindow_AppTitle.Text"><value>XZip</value></data>
+  <data name="MainWindow_NavOpen.Content"><value>Open</value></data>
+  <data name="MainWindow_NavCreate.Content"><value>Create</value></data>
+  <data name="MainWindow_NavRecent.Content"><value>Recent</value></data>
+  <data name="MainWindow_NavGitHub.Content"><value>Star on GitHub</value></data>
+  <data name="MainWindow_NavSettings.Content"><value>Settings</value></data>
+
+  <data name="Settings_TitleText.Text"><value>Settings</value></data>
+  <data name="Settings_Section_Appearance.Text"><value>Appearance</value></data>
+  <data name="Settings_ThemeLabel.Text"><value>Theme</value></data>
+  <data name="Settings_BackdropLabel.Text"><value>Backdrop</value></data>
+  <data name="Settings_Section_Behavior.Text"><value>Behavior</value></data>
+  <data name="Settings_DefaultFormatLabel.Text"><value>Default format</value></data>
+  <data name="Settings_LanguageLabel.Text"><value>Language</value></data>
+  <data name="Settings_LanguageRestartHint.Title"><value>Interface language</value></data>
+  <data name="Settings_LanguageRestartHint.Message"><value>Language changes will be applied after app restart.</value></data>
+  <data name="Settings_AboutLabel.Text"><value>About</value></data>
+  <data name="Settings_VersionPrefixRun.Text"><value>XZip · version </value></data>
+  <data name="Settings_AboutDescription.Text"><value>Modern archive manager on .NET 8 + WinUI 3</value></data>
+  <data name="Settings_Language_System"><value>System</value></data>
+  <data name="Settings_Language_Russian"><value>Russian</value></data>
+  <data name="Settings_Language_English"><value>English</value></data>
+
+  <data name="ArchiveExplorer_OpenButton.ToolTipService.ToolTip"><value>Open archive (Ctrl+O)</value></data>
+  <data name="ArchiveExplorer_OpenButtonText.Text"><value>Open</value></data>
+  <data name="ArchiveExplorer_ExtractAllText.Text"><value>Extract all</value></data>
+  <data name="ArchiveExplorer_GoUpButton.ToolTipService.ToolTip"><value>Up</value></data>
+  <data name="ArchiveExplorer_SearchBox.PlaceholderText"><value>Search…</value></data>
+  <data name="ArchiveExplorer_EmptyTitle.Text"><value>Drop an archive here</value></data>
+  <data name="ArchiveExplorer_EmptyHint.Text"><value>ZIP, 7z, TAR, TAR.GZ, TAR.BZ2</value></data>
+  <data name="ArchiveExplorer_EmptyOpenButtonText.Text"><value>Open archive…</value></data>
+  <data name="ArchiveExplorer_HeaderName.Text"><value>Name</value></data>
+  <data name="ArchiveExplorer_HeaderSize.Text"><value>Size</value></data>
+  <data name="ArchiveExplorer_HeaderCompressed.Text"><value>Compressed</value></data>
+  <data name="ArchiveExplorer_HeaderRatio.Text"><value>Ratio</value></data>
+  <data name="ArchiveExplorer_HeaderModified.Text"><value>Modified</value></data>
+  <data name="ArchiveExplorer_DragOpenCaption"><value>Open archive</value></data>
+  <data name="ArchiveExplorer_DragFilesTitle"><value>Files from XZip</value></data>
+
+  <data name="Create_TitleText.Text"><value>Create archive</value></data>
+  <data name="Create_DropHintText.Text"><value>Drop files or folders into the zone below</value></data>
+  <data name="Create_ItemCountSeparatorRun.Text"><value> files · </value></data>
+  <data name="Create_AddFilesText.Text"><value>Add files</value></data>
+  <data name="Create_AddFolderText.Text"><value>Add folder</value></data>
+  <data name="Create_ClearText.Text"><value>Clear</value></data>
+  <data name="Create_FormatLabel.Text"><value>Format</value></data>
+  <data name="Create_LevelPrefixRun.Text"><value>Compression level: </value></data>
+  <data name="Create_ThreadsLabel.Text"><value>Threads</value></data>
+  <data name="Create_OutputPathBox.PlaceholderText"><value>Output archive path…</value></data>
+  <data name="Create_BrowseText.Text"><value>Browse…</value></data>
+  <data name="Create_ZipPasswordLabel.Text"><value>ZIP password</value></data>
+  <data name="Create_ZipPasswordBox.PlaceholderText"><value>Enter archive password</value></data>
+  <data name="Create_AesCheckBox.Content"><value>AES-256</value></data>
+  <data name="Create_ProgressSeparator1Run.Text"><value> · </value></data>
+  <data name="Create_ProgressSeparator2Run.Text"><value> · </value></data>
+  <data name="Create_CompressText.Text"><value>Compress</value></data>
+  <data name="Create_DragAddCaption"><value>Add to archive</value></data>
+
+  <data name="Recent_TitleText.Text"><value>Recent archives</value></data>
+  <data name="Recent_RefreshText.Text"><value>Refresh</value></data>
+  <data name="Recent_ClearText.Text"><value>Clear</value></data>
+
+  <data name="Preview_Folder"><value>Folder</value></data>
+  <data name="Preview_FileTooLarge"><value>File is too large ({0})</value></data>
+  <data name="Preview_ImageTooLarge"><value>Image is too large ({0})</value></data>
+  <data name="Preview_BinaryHead"><value>Binary file — showing first {0}</value></data>
+  <data name="Status_ItemsSummary"><value>{0} items · {1}</value></data>
+  <data name="Dialog_Ok"><value>OK</value></data>
+  <data name="Dialog_Cancel"><value>Cancel</value></data>
 </root>

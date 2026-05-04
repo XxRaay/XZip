@@ -3,6 +3,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 using Windows.ApplicationModel.DataTransfer;
+using Windows.ApplicationModel.Resources;
 
 using XZip.App.Services;
 using XZip.App.ViewModels;
@@ -16,6 +17,7 @@ public sealed partial class CreateArchivePage : Page
 
     private readonly IFilePickerService _picker;
     private readonly IDialogService _dialogs;
+    private readonly ResourceLoader _resources = ResourceLoader.GetForViewIndependentUse();
 
     public CreateArchivePage()
     {
@@ -37,7 +39,7 @@ public sealed partial class CreateArchivePage : Page
         if (e.DataView.Contains(StandardDataFormats.StorageItems))
         {
             e.AcceptedOperation = DataPackageOperation.Copy;
-            e.DragUIOverride.Caption = "Добавить в архив";
+            e.DragUIOverride.Caption = T("Create_DragAddCaption");
             e.DragUIOverride.IsCaptionVisible = true;
             e.DragUIOverride.IsContentVisible = true;
         }
@@ -64,5 +66,11 @@ public sealed partial class CreateArchivePage : Page
         var defaultName = "archive" + ext;
         var path = await _picker.PickArchiveSaveAsync(((App)Application.Current).MainWindow, defaultName, ext, label);
         if (!string.IsNullOrEmpty(path)) ViewModel.OutputPath = path;
+    }
+
+    private string T(string key)
+    {
+        var value = _resources.GetString(key);
+        return string.IsNullOrWhiteSpace(value) ? key : value;
     }
 }

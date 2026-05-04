@@ -9,21 +9,21 @@
 
     <ScrollViewer Padding="20" VerticalScrollBarVisibility="Auto">
         <StackPanel Spacing="14" MaxWidth="720" HorizontalAlignment="Stretch">
-            <TextBlock Text="Настройки" Style="{StaticResource TitleTextBlockStyle}" />
+            <TextBlock x:Uid="Settings_TitleText" Style="{StaticResource TitleTextBlockStyle}" />
 
             <Border CornerRadius="12" Padding="16"
                     Background="{ThemeResource XZipSurfaceBrush}"
                     BorderBrush="{ThemeResource XZipSurfaceStrokeBrush}"
                     BorderThickness="1">
                 <StackPanel Spacing="12">
-                    <TextBlock Text="Внешний вид" Style="{StaticResource BodyStrongTextBlockStyle}" />
+                    <TextBlock x:Uid="Settings_Section_Appearance" Style="{StaticResource BodyStrongTextBlockStyle}" />
 
                     <Grid ColumnSpacing="12">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Тема" VerticalAlignment="Center" />
+                        <TextBlock x:Uid="Settings_ThemeLabel" Grid.Column="0" VerticalAlignment="Center" />
                         <ComboBox Grid.Column="1" MinWidth="180"
                                   ItemsSource="{x:Bind ViewModel.Themes}"
                                   SelectedItem="{x:Bind ViewModel.Theme, Mode=TwoWay}"
@@ -35,7 +35,7 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Фоновый эффект" VerticalAlignment="Center" />
+                        <TextBlock x:Uid="Settings_BackdropLabel" Grid.Column="0" VerticalAlignment="Center" />
                         <ComboBox Grid.Column="1" MinWidth="180"
                                   ItemsSource="{x:Bind ViewModel.Backdrops}"
                                   SelectedItem="{x:Bind ViewModel.Backdrop, Mode=TwoWay}"
@@ -49,18 +49,37 @@
                     BorderBrush="{ThemeResource XZipSurfaceStrokeBrush}"
                     BorderThickness="1">
                 <StackPanel Spacing="12">
-                    <TextBlock Text="Поведение" Style="{StaticResource BodyStrongTextBlockStyle}" />
+                    <TextBlock x:Uid="Settings_Section_Behavior" Style="{StaticResource BodyStrongTextBlockStyle}" />
 
                     <Grid ColumnSpacing="12">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Формат по умолчанию" VerticalAlignment="Center" />
+                        <TextBlock x:Uid="Settings_DefaultFormatLabel" Grid.Column="0" VerticalAlignment="Center" />
                         <ComboBox Grid.Column="1" MinWidth="180"
                                   ItemsSource="{x:Bind ViewModel.Formats}"
                                   SelectedItem="{x:Bind ViewModel.DefaultFormat, Mode=TwoWay}" />
                     </Grid>
+
+                    <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Uid="Settings_LanguageLabel" Grid.Column="0" VerticalAlignment="Center" />
+                        <ComboBox Grid.Column="1"
+                                  MinWidth="180"
+                                  ItemsSource="{x:Bind ViewModel.Languages}"
+                                  DisplayMemberPath="Label"
+                                  SelectedValuePath="Value"
+                                  SelectedValue="{x:Bind ViewModel.Language, Mode=TwoWay}" />
+                    </Grid>
+
+                    <InfoBar x:Uid="Settings_LanguageRestartHint"
+                             IsOpen="True"
+                             Severity="Informational"
+                             IsClosable="False" />
                 </StackPanel>
             </Border>
 
@@ -69,14 +88,14 @@
                     BorderBrush="{ThemeResource XZipSurfaceStrokeBrush}"
                     BorderThickness="1">
                 <StackPanel Spacing="6">
-                    <TextBlock Text="О программе" Style="{StaticResource BodyStrongTextBlockStyle}" />
+                    <TextBlock x:Uid="Settings_AboutLabel" Style="{StaticResource BodyStrongTextBlockStyle}" />
                     <TextBlock Style="{StaticResource BodyTextBlockStyle}">
-                        <Run Text="XZip · версия " />
+                        <Run x:Uid="Settings_VersionPrefixRun" />
                         <Run Text="{x:Bind ViewModel.Version}" />
                     </TextBlock>
-                    <TextBlock Style="{StaticResource CaptionTextBlockStyle}"
+                    <TextBlock x:Uid="Settings_AboutDescription"
+                               Style="{StaticResource CaptionTextBlockStyle}"
                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                               Text="Современный архиватор на .NET 8 + WinUI 3"
                                TextWrapping="Wrap" />
                 </StackPanel>
             </Border>
