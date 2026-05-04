@@ -21,7 +21,7 @@ Built with **.NET 8** and **WinUI 3** (Windows App SDK 1.7+), powered by
 | Light / Dark / Sys| done     | Switchable in Settings, persisted                                      |
 | Drag & drop in    | done     | Drop archive to open; drop files into Create page to add               |
 | Drag & drop out   | done     | Drag selected archive entries into Explorer / other apps               |
-| Preview pane      | removed  | Hidden by request; archive list opens without side preview panel        |
+| Preview pane      | removed  | [Hidden by bugs] Archive list opens without side preview               |
 | Localization      | done     | RU / EN .resw files                                                    |
 | Recent archives   | done     | Persisted between sessions                                             |
 | Shell extension   | scaffold | C++/WRL DLL + Package.appxmanifest registrations for Win10 + Win11     |
