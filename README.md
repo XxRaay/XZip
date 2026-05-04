@@ -3,7 +3,7 @@
 A modern, fast, beautiful archive manager for Windows.
 
 Built with **.NET 8** and **WinUI 3** (Windows App SDK 1.7+), powered by
-[SharpCompress](https://github.com/adamhathcock/sharpcompress) for ZIP / 7z / TAR / GZ / BZ2.
+[SharpCompress](https://github.com/adamhathcock/sharpcompress) for ZIP / 7z / RAR / TAR / GZ / BZ2.
 
 ---
 
@@ -14,6 +14,7 @@ Built with **.NET 8** and **WinUI 3** (Windows App SDK 1.7+), powered by
 | ZIP               | done     | Read + write, parallel deflate via TPL Dataflow                        |
 | ZIP encryption    | done     | Password-protected ZIP creation with optional AES-256                  |
 | 7z                | done     | Read-only (SharpCompress limitation)                                   |
+| RAR               | done     | Read-only (browse + extract)                                           |
 | TAR / TGZ / TBZ2  | done     | Read + write                                                           |
 | GZ / BZ2          | partial  | Detected; single-stream extract                                        |
 | Mica / Acrylic    | done     | Mica on Windows 11, Acrylic fallback on Windows 10                     |
@@ -26,6 +27,9 @@ Built with **.NET 8** and **WinUI 3** (Windows App SDK 1.7+), powered by
 | Shell extension   | scaffold | C++/WRL DLL + Package.appxmanifest registrations for Win10 + Win11     |
 | MSIX packaging    | manifest | Single-project MSIX manifest with FTAs and `xzip://` protocol          |
 | CLI               | done     | `xzip-helper.exe extract|extract-here|extract-to|add|list|probe`        |
+
+Archive creation intentionally does **not** include 7z or RAR. Supported create formats are:
+`ZIP`, `TAR`, `TAR.GZ`, `TAR.BZ2`.
 
 ## Project layout
 

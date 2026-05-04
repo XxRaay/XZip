@@ -28,7 +28,7 @@
   <data name="Toolbar_Search"><value>Search…</value></data>
 
   <data name="Empty_Title"><value>Drop an archive here</value></data>
-  <data name="Empty_Hint"><value>ZIP, 7z, TAR, TAR.GZ, TAR.BZ2</value></data>
+  <data name="Empty_Hint"><value>ZIP, 7z, RAR, TAR, TAR.GZ, TAR.BZ2</value></data>
   <data name="Empty_OpenButton"><value>Open archive…</value></data>
 
   <data name="Create_Title"><value>Create archive</value></data>
@@ -116,7 +116,7 @@
   <data name="ArchiveExplorer_GoUpButton.ToolTipService.ToolTip"><value>Up</value></data>
   <data name="ArchiveExplorer_SearchBox.PlaceholderText"><value>Search…</value></data>
   <data name="ArchiveExplorer_EmptyTitle.Text"><value>Drop an archive here</value></data>
-  <data name="ArchiveExplorer_EmptyHint.Text"><value>ZIP, 7z, TAR, TAR.GZ, TAR.BZ2</value></data>
+  <data name="ArchiveExplorer_EmptyHint.Text"><value>ZIP, 7z, RAR, TAR, TAR.GZ, TAR.BZ2</value></data>
   <data name="ArchiveExplorer_EmptyOpenButtonText.Text"><value>Open archive…</value></data>
   <data name="ArchiveExplorer_HeaderName.Text"><value>Name</value></data>
   <data name="ArchiveExplorer_HeaderSize.Text"><value>Size</value></data>

@@ -9,7 +9,7 @@ namespace XZip.Core;
 public static class ArchiveServiceFactory
 {
     /// <summary>
-    /// Build the default service with all built-in providers: ZIP, 7z (read), TAR / TAR.GZ / TAR.BZ2.
+    /// Build the default service with all built-in providers: ZIP, 7z/RAR (read), TAR / TAR.GZ / TAR.BZ2.
     /// </summary>
     public static ArchiveService CreateDefault()
     {
@@ -17,6 +17,7 @@ public static class ArchiveServiceFactory
         {
             new ZipArchiveProvider(),
             new SevenZipArchiveProvider(),
+            new RarArchiveProvider(),
             new TarArchiveProvider(),
         };
         return new ArchiveService(providers);

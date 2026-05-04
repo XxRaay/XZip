@@ -98,7 +98,7 @@ namespace
 
     bool IsArchiveFile(const std::wstring& path)
     {
-        const wchar_t* exts[] = { L".zip", L".7z", L".tar", L".tgz", L".gz", L".bz2", L".tbz2", L".tbz" };
+        const wchar_t* exts[] = { L".zip", L".7z", L".rar", L".tar", L".tgz", L".gz", L".bz2", L".tbz2", L".tbz" };
         for (auto* ext : exts)
         {
             if (PathMatchSpecW(path.c_str(), (std::wstring(L"*") + ext).c_str())) return true;

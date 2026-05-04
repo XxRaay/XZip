@@ -12,6 +12,7 @@ public class FormatDetectorTests
     [InlineData("file.zip", ArchiveFormat.Zip)]
     [InlineData("FILE.ZIP", ArchiveFormat.Zip)]
     [InlineData("file.7z", ArchiveFormat.SevenZip)]
+    [InlineData("file.rar", ArchiveFormat.Rar)]
     [InlineData("file.tar", ArchiveFormat.Tar)]
     [InlineData("file.tar.gz", ArchiveFormat.TarGz)]
     [InlineData("file.tgz", ArchiveFormat.TarGz)]
@@ -37,6 +38,15 @@ public class FormatDetectorTests
     {
         ReadOnlySpan<byte> head = stackalloc byte[] { 0x37, 0x7A, 0xBC, 0xAF, 0x27, 0x1C };
         FormatDetector.DetectFromMagic(head).Should().Be(ArchiveFormat.SevenZip);
+    }
+
+    [Theory]
+    [InlineData(0x00)]
+    [InlineData(0x01)]
+    public void DetectFromMagic_RecognisesRar(byte versionByte)
+    {
+        ReadOnlySpan<byte> head = stackalloc byte[] { 0x52, 0x61, 0x72, 0x21, 0x1A, 0x07, versionByte };
+        FormatDetector.DetectFromMagic(head).Should().Be(ArchiveFormat.Rar);
     }
 
     [Fact]

@@ -8,6 +8,7 @@ public enum ArchiveFormat
     Unknown = 0,
     Zip,
     SevenZip,
+    Rar,
     Tar,
     TarGz,
     TarBz2,
@@ -21,6 +22,7 @@ public static class ArchiveFormatExtensions
     {
         ArchiveFormat.Zip => ".zip",
         ArchiveFormat.SevenZip => ".7z",
+        ArchiveFormat.Rar => ".rar",
         ArchiveFormat.Tar => ".tar",
         ArchiveFormat.TarGz => ".tar.gz",
         ArchiveFormat.TarBz2 => ".tar.bz2",
@@ -33,6 +35,7 @@ public static class ArchiveFormatExtensions
     {
         ArchiveFormat.Zip => "ZIP",
         ArchiveFormat.SevenZip => "7-Zip",
+        ArchiveFormat.Rar => "RAR",
         ArchiveFormat.Tar => "TAR",
         ArchiveFormat.TarGz => "TAR + GZip",
         ArchiveFormat.TarBz2 => "TAR + BZip2",
@@ -46,7 +49,7 @@ public static class ArchiveFormatExtensions
     /// </summary>
     public static bool SupportsRandomAccess(this ArchiveFormat format) => format switch
     {
-        ArchiveFormat.Zip or ArchiveFormat.SevenZip or ArchiveFormat.Tar
+        ArchiveFormat.Zip or ArchiveFormat.SevenZip or ArchiveFormat.Rar or ArchiveFormat.Tar
             or ArchiveFormat.TarGz or ArchiveFormat.TarBz2 => true,
         _ => false,
     };

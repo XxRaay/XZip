@@ -39,6 +39,7 @@ internal static class FormatDetector
         var name = Path.GetFileName(path).ToLowerInvariant();
         if (name.EndsWith(".zip")) return ArchiveFormat.Zip;
         if (name.EndsWith(".7z")) return ArchiveFormat.SevenZip;
+        if (name.EndsWith(".rar")) return ArchiveFormat.Rar;
         if (name.EndsWith(".tar.gz") || name.EndsWith(".tgz")) return ArchiveFormat.TarGz;
         if (name.EndsWith(".tar.bz2") || name.EndsWith(".tbz2") || name.EndsWith(".tbz")) return ArchiveFormat.TarBz2;
         if (name.EndsWith(".tar")) return ArchiveFormat.Tar;
@@ -59,6 +60,12 @@ internal static class FormatDetector
             head[2] == 0xBC && head[3] == 0xAF &&
             head[4] == 0x27 && head[5] == 0x1C)
             return ArchiveFormat.SevenZip;
+
+        if (head.Length >= 7 &&
+            head[0] == 0x52 && head[1] == 0x61 && head[2] == 0x72 &&
+            head[3] == 0x21 && head[4] == 0x1A && head[5] == 0x07 &&
+            (head[6] == 0x00 || head[6] == 0x01))
+            return ArchiveFormat.Rar;
 
         if (head.Length >= 3 &&
             head[0] == 0x1F && head[1] == 0x8B && head[2] == 0x08)

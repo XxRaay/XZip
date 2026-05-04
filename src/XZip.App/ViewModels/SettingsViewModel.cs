@@ -19,7 +19,7 @@ public partial class SettingsViewModel : ObservableObject
         _settings = settings;
         _theme = settings.Theme;
         _backdrop = settings.Backdrop;
-        _defaultFormat = settings.DefaultFormat;
+        _defaultFormat = NormalizeWritableFormat(settings.DefaultFormat);
         _language = NormalizeLanguage(settings.Language);
     }
 
@@ -47,7 +47,7 @@ public partial class SettingsViewModel : ObservableObject
 
     public IReadOnlyList<ArchiveFormat> Formats { get; } = new[]
     {
-        ArchiveFormat.Zip, ArchiveFormat.SevenZip, ArchiveFormat.TarGz, ArchiveFormat.TarBz2, ArchiveFormat.Tar,
+        ArchiveFormat.Zip, ArchiveFormat.TarGz, ArchiveFormat.TarBz2, ArchiveFormat.Tar,
     };
 
     public IReadOnlyList<LanguageOption> Languages => new[]
@@ -61,7 +61,7 @@ public partial class SettingsViewModel : ObservableObject
 
     partial void OnThemeChanged(ElementTheme value) => _settings.Theme = value;
     partial void OnBackdropChanged(BackdropKind value) => _settings.Backdrop = value;
-    partial void OnDefaultFormatChanged(ArchiveFormat value) => _settings.DefaultFormat = value;
+    partial void OnDefaultFormatChanged(ArchiveFormat value) => _settings.DefaultFormat = NormalizeWritableFormat(value);
     partial void OnLanguageChanged(string value) => _settings.Language = NormalizeLanguage(value);
 
     private static string NormalizeLanguage(string? value)
@@ -73,6 +73,12 @@ public partial class SettingsViewModel : ObservableObject
             _ => "system",
         };
     }
+
+    private static ArchiveFormat NormalizeWritableFormat(ArchiveFormat value) => value switch
+    {
+        ArchiveFormat.Zip or ArchiveFormat.TarGz or ArchiveFormat.TarBz2 or ArchiveFormat.Tar => value,
+        _ => ArchiveFormat.Zip,
+    };
 
     private string T(string key)
     {

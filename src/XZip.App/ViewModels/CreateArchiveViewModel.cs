@@ -67,14 +67,13 @@ public partial class CreateArchiveViewModel : ObservableObject
         ArchiveFormat.Tar,
         ArchiveFormat.TarGz,
         ArchiveFormat.TarBz2,
-        ArchiveFormat.SevenZip,
     };
 
     public CreateArchiveViewModel(ArchiveService service, ISettingsService settings)
     {
         _service = service;
         _settings = settings;
-        Format = settings.DefaultFormat;
+        Format = NormalizeWritableFormat(settings.DefaultFormat);
     }
 
     public void AddPaths(IEnumerable<string> paths)
@@ -159,6 +158,12 @@ public partial class CreateArchiveViewModel : ObservableObject
             Password = null;
         }
     }
+
+    private static ArchiveFormat NormalizeWritableFormat(ArchiveFormat value) => value switch
+    {
+        ArchiveFormat.Zip or ArchiveFormat.Tar or ArchiveFormat.TarGz or ArchiveFormat.TarBz2 => value,
+        _ => ArchiveFormat.Zip,
+    };
 
     private IReadOnlyList<SourceItem> BuildItems()
     {

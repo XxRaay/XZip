@@ -24,7 +24,7 @@ public sealed class FilePickerService : IFilePickerService
             SuggestedStartLocation = PickerLocationId.Downloads,
             ViewMode = PickerViewMode.List,
         };
-        foreach (var ext in new[] { ".zip", ".7z", ".tar", ".gz", ".tgz", ".bz2", ".tbz2" })
+        foreach (var ext in new[] { ".zip", ".7z", ".rar", ".tar", ".gz", ".tgz", ".bz2", ".tbz2", ".tbz" })
             picker.FileTypeFilter.Add(ext);
 
         InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(window));

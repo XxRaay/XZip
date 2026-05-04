@@ -56,6 +56,7 @@
             <uap:SupportedFileTypes>
               <uap:FileType>.zip</uap:FileType>
               <uap:FileType>.7z</uap:FileType>
+              <uap:FileType>.rar</uap:FileType>
               <uap:FileType>.tar</uap:FileType>
               <uap:FileType>.gz</uap:FileType>
               <uap:FileType>.tgz</uap:FileType>
@@ -94,6 +95,11 @@
               <desktop4:Verb Id="XZipOpenIn"      Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C15" />
             </desktop4:ItemType>
             <desktop4:ItemType Type=".7z">
+              <desktop4:Verb Id="XZipExtractHere" Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C12" />
+              <desktop4:Verb Id="XZipExtractTo"   Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C13" />
+              <desktop4:Verb Id="XZipOpenIn"      Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C15" />
+            </desktop4:ItemType>
+            <desktop4:ItemType Type=".rar">
               <desktop4:Verb Id="XZipExtractHere" Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C12" />
               <desktop4:Verb Id="XZipExtractTo"   Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C13" />
               <desktop4:Verb Id="XZipOpenIn"      Clsid="3E5B8C12-1B4D-4A77-9A78-3F0B2D8B9C15" />
